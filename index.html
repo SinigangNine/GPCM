@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Connected — Worship Team Home</title>
+<title>Glorious Power in Christ Ministry</title>
 <meta name="description" content="Plan services, manage your worship team, and keep everyone in sync — all in one place."/>
 
 <!-- PWA: installability -->
@@ -201,25 +201,6 @@
 </div>
 </div>
 </footer>
-<!-- Mobile Bottom Navigation -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe bg-surface border-t border-outline-variant h-16 z-50">
-<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform active:scale-95" href="index.html">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-md text-[10px]">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="ui.html">
-<span class="material-symbols-outlined">event_note</span>
-<span class="font-label-md text-[10px]">Plans</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="team.html">
-<span class="material-symbols-outlined">people</span>
-<span class="font-label-md text-[10px]">Team</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="#">
-<span class="material-symbols-outlined">more_horiz</span>
-<span class="font-label-md text-[10px]">More</span>
-</a>
-</nav>
 <!-- Archive Detail Modal -->
 <div class="fixed inset-0 z-[100] hidden items-center justify-center px-margin-mobile md:px-margin-desktop" id="archiveModal">
 <div class="absolute inset-0 bg-on-background/60 backdrop-blur-sm" id="archiveModalBackdrop"></div>
@@ -324,8 +305,7 @@
             const archiveTrigger = isCompleted
                 ? `<button type="button" onclick="openServiceModal('${row.id}')" class="mt-stack-sm w-full py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors inline-block text-center">View Archive</button>`
                 : `<div class="mt-stack-sm flex gap-2">
-                        <button type="button" onclick="openServiceModal('${row.id}')" class="flex-1 py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors inline-block text-center">View Plan</button>
-                        <a href="ui.html" class="flex-1 py-2 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors inline-block text-center">Edit Plan</a>
+                        <button type="button" onclick="openServiceModal('${row.id}')" class="w-full py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors inline-block text-center">View Plan</button>
                    </div>`;
             
             const fileChips = isCompleted ? (s.attachments || []).filter(a => a.url).map(a => {
