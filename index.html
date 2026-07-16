@@ -1,0 +1,545 @@
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Connected — Worship Team Home</title>
+<meta name="description" content="Plan services, manage your worship team, and keep everyone in sync — all in one place."/>
+
+<!-- PWA: installability -->
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#ffd51e"/>
+<link rel="icon" href="GPCM192.png" type="image/png"/>
+<link rel="apple-touch-icon" href="GPCM192.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="GPCM"/>
+
+<!-- Social share preview (Open Graph: Slack, Discord, iMessage, WhatsApp, Facebook) -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Connected — Worship Team Home"/>
+<meta property="og:description" content="Plan services, manage your worship team, and keep everyone in sync — all in one place."/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCl2XDTOIwBjnuPOy3HoGTBldfZWhF0MictYbaj6AAxnr3ypPbMepalUmBq8ouR4s4ePdmcZ1oDRO0GTbpT06gJ5qSFbhikHEnCyEfNl8CrHZlOqayCHMWsHjFE0eP-ScRBWc1VJIAPRtEzcJ_UvWqn9KCC6B5yIxr628EsNN2xSQ7QxEN66YO3i7zEyb8IuJxnUy01YEk7iz5U6AoAWakX0esvd3jluFjCu49nwkTJqx5n8hhiVzUP"/>
+
+<!-- Social share preview (Twitter/X Card) -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Connected — Worship Team Home"/>
+<meta name="twitter:description" content="Plan services, manage your worship team, and keep everyone in sync — all in one place."/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuCl2XDTOIwBjnuPOy3HoGTBldfZWhF0MictYbaj6AAxnr3ypPbMepalUmBq8ouR4s4ePdmcZ1oDRO0GTbpT06gJ5qSFbhikHEnCyEfNl8CrHZlOqayCHMWsHjFE0eP-ScRBWc1VJIAPRtEzcJ_UvWqn9KCC6B5yIxr628EsNN2xSQ7QxEN66YO3i7zEyb8IuJxnUy01YEk7iz5U6AoAWakX0esvd3jluFjCu49nwkTJqx5n8hhiVzUP"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">try{try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fec564",
+                    "inverse-primary": "#b7c6ee",
+                    "primary": "#041534",
+                    "inverse-on-surface": "#edf0ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "surface-container-high": "#e4e8f8",
+                    "background": "#FAF7F2",
+                    "primary-container": "#1b2a4a",
+                    "on-secondary-container": "#765100",
+                    "surface-dim": "#d5daea",
+                    "on-error": "#ffffff",
+                    "on-background": "#161c27",
+                    "secondary-fixed-dim": "#f5bd5d",
+                    "tertiary": "#161714",
+                    "surface-container-low": "#f1f3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#45464e",
+                    "outline-variant": "#c5c6cf",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "primary-fixed-dim": "#b7c6ee",
+                    "tertiary-container": "#2b2b28",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#0a1a3a",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "primary-fixed": "#d9e2ff",
+                    "on-primary-container": "#8392b7",
+                    "on-surface": "#161c27",
+                    "on-primary-fixed-variant": "#384668",
+                    "on-secondary-fixed-variant": "#604100",
+                    "surface-variant": "#dee2f2",
+                    "surface-container-highest": "#dee2f2",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "surface-container": "#e9edfe",
+                    "surface": "#FAF7F2",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#281900",
+                    "secondary": "#C9963A",
+                    "secondary-fixed": "#ffdeac",
+                    "outline": "#75777f",
+                    "on-tertiary-container": "#93928e",
+                    "surface-tint": "#4f5e81",
+                    "inverse-surface": "#2b303c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "caption": ["Inter"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}}catch(_e){}</script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">Glorious Power in Christ Ministry</span>
+</div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-secondary transition-colors cursor-pointer" href="index.html">Home</a>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="py-20 md:py-32 flex flex-col items-center text-center relative overflow-hidden">
+<!-- Atmospheric micro-interaction element -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-secondary opacity-5 rounded-full blur-3xl animate-pulse"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+<div class="relative z-10 space-y-stack-md max-w-2xl">
+<h1 class="font-display-lg text-display-lg text-primary leading-tight">Welcome GPCM Family</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Welcome home. Gather your team, plan with purpose, and create services that draw hearts closer to God together, in one peaceful place.</p>
+</div>
+<!-- Hero Image / Visual Anchor -->
+<div class="mt-16 w-full max-w-4xl rounded-xl overflow-hidden stately-shadow border border-outline-variant aspect-video">
+<img alt="Glorious Power in Christ Ministries logo and ark of the covenant." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChtwbdDVQRSHm5dCwd--h-KVLg6J3vx5oa0gHJQwIfmxzM-juIiv0ZfYJ92mRfADMQqiTO-cz13x3roRhVd1zp8_-in81yi66jJWdBYu_QTbmshy8Ykp3Q_cxaj_tw1T2M1a5qQfYI-nvJLzfMjVyGkfzCgR4nMZrBpVEcL2mWrHHtPLUs17I370O2obZvLYMnMfWEYZNN3q-gIFb6VyM-A1vRILLEqjp00gNlg_2-9LMvUD8oyblg5XtbRWZGxS1qqg"/>
+</div>
+</section>
+<!-- Pending Schedules Section -->
+<section class="py-stack-lg">
+<div class="flex justify-between items-end mb-stack-lg border-b border-outline-variant pb-stack-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Upcoming Pending Services</h2>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Review and finalize the details for these upcoming gatherings.</p>
+</div>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline" href="ui.html">
+                    View All Schedules
+                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Dynamic Container for Pending Services -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter min-h-[100px]" id="pendingServicesList">
+<div class="col-span-full flex justify-center py-12" id="pendingLoading"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
+</div>
+</section>
+<!-- Completed Schedules Section -->
+<section class="py-stack-lg pb-32">
+<div class="flex justify-between items-end mb-stack-lg border-b border-outline-variant pb-stack-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Recently Completed Services</h2>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">A look back at our recent gatherings and worship moments.</p>
+</div>
+</div>
+<!-- Dynamic Container for Completed Services -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter min-h-[100px]" id="completedServicesList">
+<div class="col-span-full flex justify-center py-12" id="completedLoading"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
+</div>
+<div class="flex justify-center mt-stack-lg hidden" id="completedShowMoreWrap">
+<button type="button" id="completedShowMoreBtn" class="px-8 py-3 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors">Show More</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-16 border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-stack-lg">
+<div class="col-span-1 md:col-span-3">
+<span class="font-headline-md text-headline-md font-bold text-primary">Connected</span>
+<p class="mt-4 font-body-md text-on-surface-variant max-w-sm">Elevating worship planning through precision, beauty, and collaborative grace. Designed for the modern church leader.</p>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-outline-variant/30 flex justify-between items-center flex-wrap gap-4">
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Connected Worship Systems. All rights reserved.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">face_nod</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">mail</span>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe bg-surface border-t border-outline-variant h-16 z-50">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform active:scale-95" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="ui.html">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-md text-[10px]">Plans</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="team.html">
+<span class="material-symbols-outlined">people</span>
+<span class="font-label-md text-[10px]">Team</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-md text-[10px]">More</span>
+</a>
+</nav>
+<!-- Archive Detail Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center px-margin-mobile md:px-margin-desktop" id="archiveModal">
+<div class="absolute inset-0 bg-on-background/60 backdrop-blur-sm" id="archiveModalBackdrop"></div>
+<div class="relative bg-surface-container-lowest w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-xl stately-shadow border border-outline-variant p-gutter">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<span class="px-3 py-1 rounded-full inline-flex items-center gap-1 mb-2" id="archiveStatusBadge">
+<span class="material-symbols-outlined text-[14px]" id="archiveStatusIcon">check_circle</span>
+<span class="font-label-md text-[12px] uppercase tracking-wider" id="archiveStatusText">Completed</span>
+</span>
+<h3 class="font-headline-md text-headline-md text-primary capitalize" id="archiveTitle">Service</h3>
+<p class="font-body-md text-on-surface-variant" id="archiveDate">Date</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors" id="archiveModalClose" aria-label="Close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="mb-stack-md" id="archiveSpeaker"></div>
+<div class="flex flex-wrap gap-2 mb-stack-md" id="archiveRoles"></div>
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-wider mb-2">Song Set</h4>
+<p class="font-caption text-caption text-on-surface-variant opacity-70 mb-2">Tap a song to search for chords</p>
+<ul class="divide-y divide-outline-variant/30" id="archiveSongs"></ul>
+</div>
+<div class="mt-stack-md hidden" id="archiveFilesSection">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-wider mb-2">Files &amp; Documents</h4>
+<div class="flex flex-col gap-2" id="archiveFiles"></div>
+</div>
+</div>
+</div>
+<script>
+        // Supabase Initialization
+        const SUPABASE_URL = 'https://wrsbdzzztckxyxuxspzu.supabase.co';
+        const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indyc2Jkenp6dGNreHl4dXhzcHp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0OTc4MTIsImV4cCI6MjA5NzA3MzgxMn0.agffd3LifwG-zkINTOYriozivRSl1nTEqKYYg3jLJXQ';
+        const { createClient } = supabase;
+        const db = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+        function formatLongDate(iso) {
+            if (!iso) return 'Undated';
+            try {
+                const parts = iso.split('-');
+                if (parts.length !== 3) return iso;
+                const [y, m, d] = parts.map(Number);
+                return new Date(y, m - 1, d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            } catch (e) {
+                return iso;
+            }
+        }
+
+        // Keep all rows around so the service modal can look them up by id
+        const allRowsById = {};
+
+        // Pagination state for the "Recently Completed Services" section
+        const COMPLETED_PAGE_SIZE = 3;
+        let allCompletedCards = [];
+        let completedVisibleCount = COMPLETED_PAGE_SIZE;
+
+        function renderCompletedCards() {
+            const completedContainer = document.getElementById('completedServicesList');
+            const showMoreWrap = document.getElementById('completedShowMoreWrap');
+
+            completedContainer.innerHTML = allCompletedCards.slice(0, completedVisibleCount).join('');
+
+            if (completedVisibleCount < allCompletedCards.length) {
+                showMoreWrap.classList.remove('hidden');
+            } else {
+                showMoreWrap.classList.add('hidden');
+            }
+        }
+
+        // File type icon helper (for attachments shown on cards / modal)
+        const FILE_ICONS = {
+            pdf:  { icon: '📕', bg: '#fdecea', color: '#c53030' },
+            doc:  { icon: '📘', bg: '#e3f2fd', color: '#1565c0' },
+            docx: { icon: '📘', bg: '#e3f2fd', color: '#1565c0' },
+            ppt:  { icon: '📙', bg: '#fff4e6', color: '#d9631e' },
+            pptx: { icon: '📙', bg: '#fff4e6', color: '#d9631e' },
+            xls:  { icon: '📗', bg: '#e8f5e9', color: '#2e7d32' },
+            xlsx: { icon: '📗', bg: '#e8f5e9', color: '#2e7d32' },
+            txt:  { icon: '📄', bg: '#f1f4f9', color: '#4a5568' }
+        };
+        function getFileMeta(filename) {
+            const ext = (filename.split('.').pop() || '').toLowerCase();
+            return FILE_ICONS[ext] || { icon: '📄', bg: '#f1f4f9', color: '#4a5568' };
+        }
+        function formatFileSize(bytes) {
+            if (!bytes && bytes !== 0) return '';
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function createServiceCard(row) {
+            const s = row.data;
+            if (!s) return '';
+            
+            // Reconcile completed status (could be string or boolean)
+            const isCompleted = s.completed === true || s.completed === "true";
+
+            allRowsById[row.id] = row;
+
+            const archiveTrigger = isCompleted
+                ? `<button type="button" onclick="openServiceModal('${row.id}')" class="mt-stack-sm w-full py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors inline-block text-center">View Archive</button>`
+                : `<div class="mt-stack-sm flex gap-2">
+                        <button type="button" onclick="openServiceModal('${row.id}')" class="flex-1 py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors inline-block text-center">View Plan</button>
+                        <a href="ui.html" class="flex-1 py-2 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors inline-block text-center">Edit Plan</a>
+                   </div>`;
+            
+            const fileChips = isCompleted ? (s.attachments || []).filter(a => a.url).map(a => {
+                const meta = getFileMeta(a.name);
+                return `<a href="${a.url}" target="_blank" rel="noopener" download="${escapeHtml(a.name)}" class="inline-flex items-center gap-1 bg-surface-container text-on-surface px-3 py-1 rounded-full text-[12px] font-label-md border border-outline-variant hover:border-secondary hover:text-secondary transition-colors">${meta.icon} ${escapeHtml(a.name)} <span class="material-symbols-outlined text-[13px]">download</span></a>`;
+            }).join('') : '';
+
+            return `
+                <div class="bg-surface-container-lowest border border-outline-variant p-gutter rounded-xl stately-shadow flex flex-col gap-stack-md transition-transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start">
+                        <div class="${isCompleted ? 'bg-green-100 text-green-800' : 'bg-secondary-container/20 text-on-secondary-container'} px-3 py-1 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">${isCompleted ? 'check_circle' : 'pending'}</span>
+                            <span class="font-label-md text-[12px] uppercase tracking-wider">${isCompleted ? 'Completed' : 'Pending'}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary capitalize">${(s.service_type || 'Service').replace('_', ' ')}</h3>
+                        <p class="font-body-md text-on-surface-variant">${formatLongDate(s.date)}</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-stack-sm border-t border-outline-variant/30">
+                        <div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden flex items-center justify-center">
+                             <span class="material-symbols-outlined text-on-surface-variant text-xl">person</span>
+                        </div>
+                        <span class="font-label-md text-on-surface truncate">${s.preacher || 'No Speaker Assigned'}</span>
+                    </div>
+                    ${fileChips ? `<div class="flex flex-wrap gap-2">${fileChips}</div>` : ''}
+                    ${archiveTrigger}
+                </div>
+            `;
+        }
+
+        // Escape helper for interpolating user-entered text into HTML
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function searchChords(title) {
+            const query = encodeURIComponent(`${title} chords`);
+            window.open(`https://www.google.com/search?q=${query}`, '_blank', 'noopener');
+        }
+
+        function openServiceModal(id) {
+            const row = allRowsById[id];
+            if (!row || !row.data) return;
+            const s = row.data;
+            const isCompleted = s.completed === true || s.completed === "true";
+
+            const badge = document.getElementById('archiveStatusBadge');
+            const icon = document.getElementById('archiveStatusIcon');
+            const text = document.getElementById('archiveStatusText');
+            badge.className = (isCompleted ? 'bg-green-100 text-green-800' : 'bg-secondary-container/20 text-on-secondary-container') + ' px-3 py-1 rounded-full inline-flex items-center gap-1 mb-2';
+            icon.textContent = isCompleted ? 'check_circle' : 'pending';
+            text.textContent = isCompleted ? 'Completed' : 'Pending';
+
+            document.getElementById('archiveTitle').textContent = (s.service_type || 'Service').replace('_', ' ');
+            document.getElementById('archiveDate').textContent = formatLongDate(s.date);
+
+            const speakerEl = document.getElementById('archiveSpeaker');
+            speakerEl.innerHTML = s.preacher
+                ? `<p class="font-body-md text-on-surface-variant"><strong class="text-on-surface">Speaker:</strong> ${escapeHtml(s.preacher)}</p>`
+                : '';
+
+            const rolesEl = document.getElementById('archiveRoles');
+            const rolesEntries = Object.entries(s.roles || {}).filter(([, v]) => v);
+            rolesEl.innerHTML = rolesEntries.length
+                ? rolesEntries.map(([k, v]) => `<span class="bg-surface-container text-on-surface px-3 py-1 rounded-full text-[12px] font-label-md border border-outline-variant">${escapeHtml(k.toUpperCase())}: ${escapeHtml(v)}</span>`).join('')
+                : '';
+
+            const songsEl = document.getElementById('archiveSongs');
+            const songs = s.songs || [];
+            songsEl.innerHTML = songs.length
+                ? songs.map((song, i) => `
+                    <li class="py-2 flex items-center gap-3">
+                        <span class="w-6 h-6 flex items-center justify-center rounded-full bg-secondary-container/30 text-on-secondary-container text-[12px] font-label-md">${i + 1}</span>
+                        <button type="button" onclick="searchChords('${escapeHtml(song.title).replace(/'/g, "\\'")}')" class="font-body-md text-on-surface border-b border-secondary hover:text-secondary transition-colors">${escapeHtml(song.title)}</button>
+                        <span class="font-caption text-caption text-on-surface-variant">${song.key ? '· ' + escapeHtml(song.key) : ''}</span>
+                    </li>`).join('')
+                : '<li class="py-2 font-body-md text-on-surface-variant opacity-70">No songs recorded.</li>';
+
+            const filesSection = document.getElementById('archiveFilesSection');
+            const filesEl = document.getElementById('archiveFiles');
+            const files = (s.attachments || []).filter(a => a.url);
+            if (files.length) {
+                filesSection.classList.remove('hidden');
+                filesEl.innerHTML = files.map(a => {
+                    const meta = getFileMeta(a.name);
+                    const downloadAttr = isCompleted ? `download="${escapeHtml(a.name)}"` : '';
+                    return `<a href="${a.url}" target="_blank" rel="noopener" ${downloadAttr} class="flex items-center gap-3 bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 hover:border-secondary transition-colors">
+                        <span class="w-8 h-8 rounded-lg flex items-center justify-center text-sm" style="background:${meta.bg}; color:${meta.color}">${meta.icon}</span>
+                        <span class="flex-1 min-w-0">
+                            <span class="block font-label-md text-on-surface truncate">${escapeHtml(a.name)}</span>
+                            <span class="block font-caption text-caption text-on-surface-variant">${formatFileSize(a.size)}${isCompleted ? ' · Tap to download' : ' · Tap to view'}</span>
+                        </span>
+                        <span class="material-symbols-outlined text-on-surface-variant text-[18px]">${isCompleted ? 'download' : 'visibility'}</span>
+                    </a>`;
+                }).join('');
+            } else {
+                filesSection.classList.add('hidden');
+                filesEl.innerHTML = '';
+            }
+
+            const modal = document.getElementById('archiveModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeArchiveModal() {
+            const modal = document.getElementById('archiveModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('archiveModalBackdrop').addEventListener('click', closeArchiveModal);
+        document.getElementById('archiveModalClose').addEventListener('click', closeArchiveModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeArchiveModal();
+        });
+
+        document.getElementById('completedShowMoreBtn').addEventListener('click', () => {
+            completedVisibleCount += COMPLETED_PAGE_SIZE;
+            renderCompletedCards();
+        });
+
+        async function initDashboard() {
+            const pendingContainer = document.getElementById('pendingServicesList');
+            const completedContainer = document.getElementById('completedServicesList');
+
+            try {
+                const { data: rows, error } = await db.from('schedules').select('*').order('created_at', { ascending: false });
+
+                if (error) {
+                    console.error('Supabase error:', error);
+                    throw error;
+                }
+
+                const pendingCards = [];
+                const completedCards = [];
+
+                if (rows && rows.length > 0) {
+                    rows.forEach(row => {
+                        const cardHtml = createServiceCard(row);
+                        // Reconcile completed status (could be string or boolean)
+                        const isCompleted = row.data && (row.data.completed === true || row.data.completed === "true");
+                        
+                        if (isCompleted) {
+                            completedCards.push(cardHtml);
+                        } else {
+                            pendingCards.push(cardHtml);
+                        }
+                    });
+                }
+
+                // Populate Pending
+                if (pendingCards.length > 0) {
+                    pendingContainer.innerHTML = pendingCards.join('');
+                } else {
+                    pendingContainer.innerHTML = '<p class="col-span-full text-center text-on-surface-variant opacity-50 py-10">No pending services found.</p>';
+                }
+
+                // Populate Completed
+                if (completedCards.length > 0) {
+                    allCompletedCards = completedCards;
+                    completedVisibleCount = COMPLETED_PAGE_SIZE;
+                    renderCompletedCards();
+                } else {
+                    completedContainer.innerHTML = '<p class="col-span-full text-center text-on-surface-variant opacity-50 py-10">No completed services found.</p>';
+                    document.getElementById('completedShowMoreWrap').classList.add('hidden');
+                }
+
+            } catch (err) {
+                console.error('Error loading dashboard data:', err);
+                pendingContainer.innerHTML = '<p class="col-span-full text-center text-error py-10">Failed to load services. Please check connection.</p>';
+                completedContainer.innerHTML = '<p class="col-span-full text-center text-error py-10">Failed to load services.</p>';
+            }
+        }
+
+        // Initialize dashboard when the document is ready
+        document.addEventListener('DOMContentLoaded', initDashboard);
+
+        // Register service worker for offline support + installability
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then((registration) => {
+                    console.log('Service worker registered:', registration.scope);
+                    requestNotificationPermission();
+                }).catch((err) => {
+                    console.warn('Service worker registration failed:', err);
+                });
+            });
+        }
+
+        // Request notification permission and log a sample local notification
+        // (swap in your push subscription / VAPID key logic when you're ready to send real push notifications)
+        function requestNotificationPermission() {
+            if (!('Notification' in window)) return;
+            if (Notification.permission === 'default') {
+                Notification.requestPermission().then((permission) => {
+                    if (permission === 'granted') {
+                        navigator.serviceWorker.ready.then((registration) => {
+                            registration.showNotification('GPCM', {
+                                body: 'Notifications are now enabled for service updates.',
+                                icon: 'GPCM192.png',
+                                badge: 'GPCM192.png'
+                            });
+                        });
+                    }
+                });
+            }
+        }
+    </script>
+</body></html>
