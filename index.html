@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Glorious Power in Christ Ministry</title>
+<title>Connected — Worship Team Home</title>
 <meta name="description" content="Plan services, manage your worship team, and keep everyone in sync — all in one place."/>
 
 <!-- PWA: installability -->
@@ -135,6 +135,20 @@
 <a class="font-label-md text-label-md text-primary font-bold border-b-2 border-secondary transition-colors cursor-pointer" href="index.html">Home</a>
 </nav>
 </header>
+<!-- Install App Banner -->
+<div class="hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-md" id="installBanner">
+<div class="bg-primary text-on-primary rounded-xl stately-shadow px-5 py-4 flex items-center gap-4 border border-primary-container">
+<span class="material-symbols-outlined text-secondary text-3xl flex-shrink-0">install_mobile</span>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md">Install this app</p>
+<p class="font-caption text-caption opacity-80" id="installBannerSubtext">Add to your home screen for quick, offline access.</p>
+</div>
+<button type="button" id="installBannerAction" class="flex-shrink-0 bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Install</button>
+<button type="button" id="installBannerDismiss" class="flex-shrink-0 text-on-primary opacity-60 hover:opacity-100 transition-opacity" aria-label="Dismiss">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
 <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <!-- Hero Section -->
 <section class="py-20 md:py-32 flex flex-col items-center text-center relative overflow-hidden">
@@ -490,6 +504,78 @@
 
         // Initialize dashboard when the document is ready
         document.addEventListener('DOMContentLoaded', initDashboard);
+
+        // ---------- Install Banner ----------
+        (function initInstallBanner() {
+            const banner = document.getElementById('installBanner');
+            const actionBtn = document.getElementById('installBannerAction');
+            const dismissBtn = document.getElementById('installBannerDismiss');
+            const subtext = document.getElementById('installBannerSubtext');
+            const DISMISS_KEY = 'installBannerDismissedAt';
+            const DISMISS_DAYS = 14;
+            let deferredPrompt = null;
+
+            function isStandalone() {
+                return window.matchMedia('(display-mode: standalone)').matches
+                    || window.navigator.standalone === true;
+            }
+
+            function recentlyDismissed() {
+                const stored = localStorage.getItem(DISMISS_KEY);
+                if (!stored) return false;
+                const elapsedDays = (Date.now() - Number(stored)) / (1000 * 60 * 60 * 24);
+                return elapsedDays < DISMISS_DAYS;
+            }
+
+            function showBanner() {
+                if (isStandalone() || recentlyDismissed()) return;
+                banner.classList.remove('hidden');
+            }
+
+            function hideBanner() {
+                banner.classList.add('hidden');
+            }
+
+            dismissBtn.addEventListener('click', () => {
+                localStorage.setItem(DISMISS_KEY, String(Date.now()));
+                hideBanner();
+            });
+
+            // Standard install flow (Chrome, Edge, Android browsers)
+            window.addEventListener('beforeinstallprompt', (event) => {
+                event.preventDefault();
+                deferredPrompt = event;
+                subtext.textContent = 'Add to your home screen for quick, offline access.';
+                actionBtn.textContent = 'Install';
+                showBanner();
+            });
+
+            actionBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                    hideBanner();
+                } else {
+                    // iOS Safari has no programmatic prompt — just point the user to Share > Add to Home Screen
+                    subtext.textContent = 'Tap the Share icon, then "Add to Home Screen".';
+                }
+            });
+
+            window.addEventListener('appinstalled', () => {
+                hideBanner();
+                deferredPrompt = null;
+            });
+
+            // iOS Safari: no beforeinstallprompt event exists, so show instructions instead
+            const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+            const isSafari = /safari/i.test(window.navigator.userAgent) && !/crios|fxios|edgios/i.test(window.navigator.userAgent);
+            if (isIos && isSafari && !isStandalone() && !recentlyDismissed()) {
+                subtext.textContent = 'Tap the Share icon, then "Add to Home Screen".';
+                actionBtn.textContent = 'How?';
+                showBanner();
+            }
+        })();
 
         // Register service worker for offline support + installability
         if ('serviceWorker' in navigator) {
